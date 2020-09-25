@@ -8,31 +8,37 @@ import java.util.Vector;
  * @author Deus
  */
 public class RelatorioPessoas {
+
 	/**
 	 * a string para somar todos os nomes na lista 
 	 */
-	static String _s;
+	private List<Pessoa> listaPessoas;
 	
 	/**
 	 * imprime a lista de pessoas
 	 * @param paramL
 	 */
-	public static void print_e_vai(Vector paramL){
-		
+	public List<Pessoa> obterRelatorioPessoas(Pessoa pessoa){
+
+		this.listaPessoas = new ArrayList<Pessoa>();
+
+		Pessoa p;
+		Validation validador = new Validation();
+		List<String> erro;
+
 		for (int i = 0; i < paramL.size(); i++) {
-			
-			Pessoa p = (Pessoa) paramL.get(i);
-			Validation validador = new Validation();
-			List<String> erro = validador.validaPessoa(p);
-			
+
+			p = (Pessoa) paramL.get(i);
+			erro = validador.validaPessoa(p);
+
 			if(!erro.isEmpty())
 				continue;
 			
-		    _s += ", " + p.name;			
+		    listaPessoas.add(p);
+
 		}
 
-		_s = _s.substring(2); 
-		System.out.print(_s);
+		return listaPessoas;
 	}
 
 }
