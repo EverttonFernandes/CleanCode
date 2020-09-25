@@ -7,7 +7,7 @@ import java.util.Vector;
  * Relatório de pessoas
  * @author Deus
  */
-public class report_de_pessoas {
+public class RelatorioPessoas {
 	/**
 	 * a string para somar todos os nomes na lista 
 	 */
@@ -34,32 +34,6 @@ public class report_de_pessoas {
 		_s = _s.substring(2); 
 		System.out.print(_s);
 	}
-	
-	/**
-	 * codigo principal
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		Vector v = new Vector();
-		
-		Pessoa p = new Pessoa();
-		p.name = "Fulano";
-		p.cpf = "0033435457";
-		ArrayList<String> pessoaTelefonesFixos = new ArrayList<String>();
-		pessoaTelefonesFixos.add("8765343");
-		p.telefonesCelulares = pessoaTelefonesFixos;
-		v.add(p);
-		
-		print_e_vai(v);
-		
-	}
 
 }
 
- class Pessoa{
-	String name;
-	String cpf;
-	int idade;
-	List<String> telefonesFixos;
-	List<String> telefonesCelulares;
-}
