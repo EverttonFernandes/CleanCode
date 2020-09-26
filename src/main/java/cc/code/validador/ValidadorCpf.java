@@ -2,7 +2,7 @@ package cc.code.validador;
 
 public class ValidadorCpf {
 
-   static public boolean CPF (String strCpf )
+   static public boolean CpfValido(String strCpf )
    {
       int     d1, d2;
       int     digito1, digito2, resto;
@@ -55,7 +55,7 @@ public class ValidadorCpf {
 
    
    public static void main(String[] args) {
-      System.out.println( CPF("04624193806") );
+      System.out.println( CpfValido("04624193806") );
    }
    
 
