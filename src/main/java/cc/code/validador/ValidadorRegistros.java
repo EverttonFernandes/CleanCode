@@ -29,7 +29,10 @@ public class ValidadorRegistros {
     }
 
     private static void validarCpf(String cpf) throws ValidadorRegistrosException{
-
+        if (!ValidadorCpf.CPF(cpf)){
+            System.err.println(MSG_CPF_INVALIDO);
+            throw new ValidadorRegistrosException(MSG_CPF_INVALIDO);
+        }
     }
 
     private static void validarTelefoneCelular(String telefoneCelular) throws ValidadorRegistrosException {

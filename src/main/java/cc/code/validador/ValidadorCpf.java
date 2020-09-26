@@ -1,6 +1,6 @@
 package cc.code.validador;
 
-public class CPF {
+public class ValidadorCpf {
 
    static public boolean CPF (String strCpf )
    {
