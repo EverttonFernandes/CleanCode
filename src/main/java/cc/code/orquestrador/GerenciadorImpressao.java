@@ -1,6 +1,6 @@
 package cc.code.orquestrador;
 import cc.code.dominio.Pessoa;
-import cc.code.validador.Validador;
+import cc.code.validador.ValidadorRegistros;
 
 import java.util.Arrays;
 import java.util.List;
@@ -24,7 +24,7 @@ public class GerenciadorImpressao {
 
 		for(Pessoa pessoa : listaPessoas) {
 			try {
-				Validador.validarPessoa(pessoa);
+				ValidadorRegistros.validarPessoa(pessoa);
 			} catch(Exception e){
 				continue;
 			}

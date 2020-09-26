@@ -1,4 +1,4 @@
-package cc.code;
+package cc.code.validador;
 
 public class CPF {
 
