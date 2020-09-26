@@ -17,30 +17,31 @@ public class ValidadorRegistros {
     /**
      * Atributo constante da classe, usada quando o nome de uma pessoa e invalido .
      */
-    public static final String MSG_NOME_INVALIDO = "Nome inválido!";
+    public static final String MSG_NOME_INVALIDO = "Nome invalido!";
 
     /**
      * Atributo constante da classe, usada quando o telefone celular de uma pessoa e invalido .
      */
-    public static final String MSG_TELEFONE_CELULAR_INVALIDO = "Telefone celular inválido!";
+    public static final String MSG_TELEFONE_CELULAR_INVALIDO = "Telefone celular invalido!";
 
     /**
      * Atributo constante da classe, usada quando o CPF de uma pessoa e invalido .
      */
-    public static final String MSG_CPF_INVALIDO = "CPF inválido!";
+    public static final String MSG_CPF_INVALIDO = "CPF invalido!";
 
     /**
      * Metodo responsavel por imprimir o relatorio de pessoas, cuja elas sao validas .
+     *
      * @param pessoa .
      * @throws ValidadorRegistrosException .
      */
     public static void imprimirPessoasValidadasComSucesso(Pessoa pessoa) throws ValidadorRegistrosException {
 
-        validarNome(pessoa.getNome());
-        validarCpf(pessoa.getCpf());
-        validarTelefoneCelular(pessoa.getTelefoneCelular());
-
-        imprimirRelatorioDePessoas(pessoa);
+        if (validarNome(pessoa.getNome()) &&
+                validarCpf(pessoa) &&
+                validarTelefoneCelular(pessoa.getTelefoneCelular())) {
+            imprimirRelatorioDePessoas(pessoa);
+        }
     }
 
     /**
@@ -49,11 +50,12 @@ public class ValidadorRegistros {
      * @param nome .
      * @throws ValidadorRegistrosException .
      */
-    private static void validarNome(String nome) throws ValidadorRegistrosException {
+    private static boolean validarNome(String nome) throws ValidadorRegistrosException {
         if (Objects.isNull(nome) || isEmpty(nome)) {
             System.err.println(MSG_NOME_INVALIDO);
             throw new ValidadorRegistrosException(MSG_NOME_INVALIDO);
         }
+        return true;
     }
 
     /**
@@ -62,11 +64,12 @@ public class ValidadorRegistros {
      * @param cpf .
      * @throws ValidadorRegistrosException .
      */
-    private static void validarCpf(String cpf) throws ValidadorRegistrosException {
-        if (!ValidadorCpf.CpfValido(cpf)) {
-            System.err.println(MSG_CPF_INVALIDO);
+    private static boolean validarCpf(Pessoa pessoa) throws ValidadorRegistrosException {
+        if (!ValidadorCpf.CpfValido(pessoa.getCpf())) {
+            System.err.println("Nao foi possivel imprimir os dados da pessoa " + pessoa.getNome() + " por motivos de " + MSG_CPF_INVALIDO);
             throw new ValidadorRegistrosException(MSG_CPF_INVALIDO);
         }
+        return true;
     }
 
     /**
@@ -75,18 +78,20 @@ public class ValidadorRegistros {
      * @param telefoneCelular .
      * @throws ValidadorRegistrosException .
      */
-    private static void validarTelefoneCelular(String telefoneCelular) throws ValidadorRegistrosException {
+    private static boolean validarTelefoneCelular(String telefoneCelular) throws ValidadorRegistrosException {
         if (telefoneCelular.length() < 10) {
             System.err.println(MSG_TELEFONE_CELULAR_INVALIDO);
             throw new ValidadorRegistrosException(MSG_TELEFONE_CELULAR_INVALIDO);
         }
+        return true;
     }
 
     /**
      * Metodo responsavel por imprimir o relatorio de pessoas .
+     *
      * @param pessoa .
      */
-    private static void imprimirRelatorioDePessoas(Pessoa pessoa){
+    private static void imprimirRelatorioDePessoas(Pessoa pessoa) {
         StringBuilder linhaBuilder = new StringBuilder();
         linhaBuilder.append(String.format("Nome: %s %s", pessoa.getNome(), pessoa.getSobrenome()));
         linhaBuilder.append(System.getProperty("line.separator"));

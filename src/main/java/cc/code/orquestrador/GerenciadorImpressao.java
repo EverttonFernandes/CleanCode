@@ -18,10 +18,10 @@ public class GerenciadorImpressao {
      */
     public static void relatorioPessoas() {
         List<Pessoa> listaPessoas = Arrays.asList(
-                new Pessoa("Everton", "Fernandes", "33221122", "11988997766", "9094469979"),
+                new Pessoa("Everton", "Fernandes", "33221122", "1988997766", "04624193806"),
                 new Pessoa("Fulano", "Da Silva", "33221122", "988997766", "9094469979"),
-                new Pessoa("Daniel", "Width", "33221122", "11988997766", "9094469979"),
-                new Pessoa("Guilherme", "Elias", "33221122", "11941728234", "9094469979")
+                new Pessoa("Daniel", "Wildt", "33221122", "11988997766", "61473662036"),
+                new Pessoa("Guilherme", "Elias", "33221122", "11941728234", "72453228056")
         );
 
         for (Pessoa pessoa : listaPessoas) {
