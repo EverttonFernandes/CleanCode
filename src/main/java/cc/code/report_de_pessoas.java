@@ -27,11 +27,12 @@ public class report_de_pessoas {
 			
 			if(!erro.isEmpty())
 				continue;
-			
-		    _s += ", " + p.name;			
+
+		    _s += ", " + p.name;
+
 		}
 
-		_s = _s.substring(2); 
+		_s = _s.substring(6);
 		System.out.print(_s);
 	}
 	
@@ -49,7 +50,15 @@ public class report_de_pessoas {
 		pessoaTelefonesFixos.add("8765343");
 		p.telefonesCelulares = pessoaTelefonesFixos;
 		v.add(p);
-		
+
+		Pessoa segundaPessoa = new Pessoa();
+		segundaPessoa.name = "Everton";
+		segundaPessoa.cpf = "090.944.699-79";
+		ArrayList<String> evertonTelefonesFixos = new ArrayList<String>();
+		pessoaTelefonesFixos.add("8765343121234");
+		segundaPessoa.telefonesCelulares = evertonTelefonesFixos;
+		v.add(segundaPessoa);
+
 		print_e_vai(v);
 		
 	}
