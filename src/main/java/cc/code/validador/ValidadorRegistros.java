@@ -3,6 +3,10 @@ package cc.code.validador;
 import cc.code.dominio.Pessoa;
 import cc.code.exception.ValidadorRegistrosException;
 
+import java.util.Objects;
+
+import static sun.util.locale.LocaleUtils.isEmpty;
+
 public class ValidadorRegistros {
 
     public static final String MSG_NOME_INVALIDO = "Nome inválido!";
@@ -17,7 +21,11 @@ public class ValidadorRegistros {
 
     }
 
-    private static void validarNome(String name) {
+    private static void validarNome(String nome) throws ValidadorRegistrosException {
+        if(Objects.isNull(nome) || isEmpty(nome)){
+            System.err.println(MSG_NOME_INVALIDO);
+            throw new ValidadorRegistrosException(MSG_NOME_INVALIDO);
+        }
     }
 
     private static void validarCpf(String cpf) throws ValidadorRegistrosException{
