@@ -40,6 +40,7 @@ public class ValidadorRegistros {
         validarCpf(pessoa.getCpf());
         validarTelefoneCelular(pessoa.getTelefoneCelular());
 
+        imprimirRelatorioDePessoas(pessoa);
     }
 
     /**
@@ -79,5 +80,21 @@ public class ValidadorRegistros {
             System.err.println(MSG_TELEFONE_CELULAR_INVALIDO);
             throw new ValidadorRegistrosException(MSG_TELEFONE_CELULAR_INVALIDO);
         }
+    }
+
+    /**
+     * Metodo responsavel por imprimir o relatorio de pessoas .
+     * @param pessoa .
+     */
+    private static void imprimirRelatorioDePessoas(Pessoa pessoa){
+        StringBuilder linhaBuilder = new StringBuilder();
+        linhaBuilder.append(String.format("Nome: %s %s", pessoa.getNome(), pessoa.getSobrenome()));
+        linhaBuilder.append(System.getProperty("line.separator"));
+        linhaBuilder.append(String.format("Fone: %s", pessoa.getTelefoneCelular()));
+        linhaBuilder.append(System.getProperty("line.separator"));
+        linhaBuilder.append(String.format("CPF: %s", pessoa.getCpf()));
+        linhaBuilder.append(System.getProperty("line.separator"));
+
+        System.out.print(linhaBuilder.toString());
     }
 }
