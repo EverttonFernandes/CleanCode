@@ -13,15 +13,18 @@ import java.util.List;
  */
 public class GerenciadorImpressao {
 
+    private GerenciadorImpressao() {
+    }
+
     /**
      * Popula relatorio de pessoas com suas devidas informacoes pessoais .
      */
     public static void relatorioPessoas() {
         List<Pessoa> listaPessoas = Arrays.asList(
                 new Pessoa("Everton", "Fernandes", "33221122", "1988997766", "04624193806"),
-                new Pessoa("Fulano", "Da Silva", "33221122", "988997766", "9094469979"),
-                new Pessoa("Daniel", "Wildt", "33221122", "11988997766", "61473662036"),
-                new Pessoa("Guilherme", "Elias", "33221122", "11941728234", "72453228056")
+                new Pessoa("Fulano", "Da Silva", "33221124", "11988997766", "9094469979"),
+                new Pessoa("Daniel", "Wildt", "33221121", "988997766", "61473662036"),
+                new Pessoa("Guilherme", "Elias", "33221129", "11941728234", "72453228056")
         );
 
         for (Pessoa pessoa : listaPessoas) {

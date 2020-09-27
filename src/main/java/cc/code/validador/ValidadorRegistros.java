@@ -29,6 +29,9 @@ public class ValidadorRegistros {
      */
     public static final String MSG_CPF_INVALIDO = "CPF invalido!";
 
+    private ValidadorRegistros() {
+    }
+
     /**
      * Metodo responsavel por imprimir o relatorio de pessoas, cuja elas sao validas .
      *
@@ -39,7 +42,7 @@ public class ValidadorRegistros {
 
         if (validarNome(pessoa.getNome()) &&
                 validarCpf(pessoa) &&
-                validarTelefoneCelular(pessoa.getTelefoneCelular())) {
+                validarTelefoneCelular(pessoa)) {
             imprimirRelatorioDePessoas(pessoa);
         }
     }
@@ -61,7 +64,7 @@ public class ValidadorRegistros {
     /**
      * Metodo responsavel por verificar se o cpf da pessoa e valido .
      *
-     * @param cpf .
+     * @param pessoa .
      * @throws ValidadorRegistrosException .
      */
     private static boolean validarCpf(Pessoa pessoa) throws ValidadorRegistrosException {
@@ -75,12 +78,12 @@ public class ValidadorRegistros {
     /**
      * Metodo responsavel por validar o telefone celular da pessoa .
      *
-     * @param telefoneCelular .
+     * @param pessoa .
      * @throws ValidadorRegistrosException .
      */
-    private static boolean validarTelefoneCelular(String telefoneCelular) throws ValidadorRegistrosException {
-        if (telefoneCelular.length() < 10) {
-            System.err.println(MSG_TELEFONE_CELULAR_INVALIDO);
+    private static boolean validarTelefoneCelular(Pessoa pessoa) throws ValidadorRegistrosException {
+        if (pessoa.getTelefoneCelular().length() < 10) {
+            System.err.println("Nao foi possivel imprimir os dados da pessoa " + pessoa.getNome() + " por movitos de " + MSG_TELEFONE_CELULAR_INVALIDO);
             throw new ValidadorRegistrosException(MSG_TELEFONE_CELULAR_INVALIDO);
         }
         return true;
